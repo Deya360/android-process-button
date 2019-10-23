@@ -1,13 +1,16 @@
 buildscript {
     repositories {
         jcenter()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.2.2'
+        classpath 'com.android.tools.build:gradle:3.5.0'
     }
 }
 
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+group = 'com.github.deya360'
 
 repositories {
     jcenter()
@@ -26,7 +29,7 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:21.0.3'
+    implementation 'com.android.support:support-v4:21.0.3'
 }
 
 // Used to push in maven
