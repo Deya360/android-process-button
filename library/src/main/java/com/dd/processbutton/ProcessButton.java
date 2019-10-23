@@ -189,6 +189,12 @@ public abstract class ProcessButton extends FlatButton {
     }
 
     @Override
+    public void setText(CharSequence text, BufferType type) {
+        super.setText(text, type);
+        setNormalText(text);
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
         // progress
         if(mProgress > mMinProgress && mProgress < mMaxProgress) {
