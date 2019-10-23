@@ -191,7 +191,7 @@ public abstract class ProcessButton extends FlatButton {
     @Override
     public void setText(CharSequence text, BufferType type) {
         super.setText(text, type);
-        setNormalText(text);
+        super.setNormalText(text);
     }
 
     @Override
@@ -258,6 +258,7 @@ public abstract class ProcessButton extends FlatButton {
         mCompleteDrawable = completeDrawable;
     }
 
+    @Override
     public void setNormalText(CharSequence normalText) {
         super.setNormalText(normalText);
         if (mProgress == mMinProgress) {
