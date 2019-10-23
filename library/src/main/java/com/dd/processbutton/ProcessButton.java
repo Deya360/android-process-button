@@ -98,6 +98,7 @@ public abstract class ProcessButton extends FlatButton {
                 mDisabledDrawable = (GradientDrawable) getDrawable(R.drawable.rect_disabled).mutate();
                 mDisabledDrawable.setCornerRadius(getCornerRadius());
                 mDisabledDrawable.setColor(attr.getColor(R.styleable.ProcessButton_pb_colorDisabled, getColor(R.color.grey_disabled)));
+                forceUpdateOnEnabled(this.isEnabled());
             }
 
         } finally {
@@ -286,26 +287,29 @@ public abstract class ProcessButton extends FlatButton {
     @Override
     public void setEnabled(boolean enabled) {
         if (enabled != super.isEnabled()) {
-            if (!enabled) {
-                onDisabledState();
-            } else {
-                switch (getState()) {
-                    case NORMAL:
-                        onNormalState();
-                        break;
-                    case PROGRESS:
-                        onProgressState();
-                        break;
-                    case ERROR:
-                        onErrorState();
-                        break;
-                    case COMPLETE:
-                        onCompleteState();
-                        break;
-                }
-            }
+            forceUpdateOnEnabled(enabled);
             super.setEnabled(enabled);
         }
+    }
+
+    private void forceUpdateOnEnabled(boolean enabled) {
+        if (!enabled) {
+            onDisabledState();
+        } else {
+            switch (getState()) {
+                case NORMAL:
+                    onNormalState();
+                    break;
+                case PROGRESS:
+                    onProgressState();
+                    break;
+                case ERROR:
+                    onErrorState();
+                    break;
+                case COMPLETE:
+                    onCompleteState();
+                    break;
+            }
     }
 
     /**
