@@ -98,7 +98,7 @@ public abstract class ProcessButton extends FlatButton {
                 mDisabledDrawable = (GradientDrawable) getDrawable(R.drawable.rect_disabled).mutate();
                 mDisabledDrawable.setCornerRadius(getCornerRadius());
                 mDisabledDrawable.setColor(attr.getColor(R.styleable.ProcessButton_pb_colorDisabled, getColor(R.color.grey_disabled)));
-                forceUpdateOnEnabled(this.isEnabled());
+//                forceUpdateOnEnabled(this.isEnabled());
             }
 
         } finally {
@@ -310,6 +310,7 @@ public abstract class ProcessButton extends FlatButton {
                     onCompleteState();
                     break;
             }
+        }
     }
 
     /**
@@ -348,4 +349,4 @@ public abstract class ProcessButton extends FlatButton {
             }
         };
     }
-}
+    }
