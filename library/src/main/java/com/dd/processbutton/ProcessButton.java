@@ -11,6 +11,14 @@ import android.util.AttributeSet;
 
 public abstract class ProcessButton extends FlatButton {
 
+    public Integer getTextColorEnabled() {
+        return textColorEnabled;
+    }
+
+    public Integer getTextColorDisabled() {
+        return textColorDisabled;
+    }
+
     public enum State {
         NORMAL,
         PROGRESS,
@@ -21,6 +29,9 @@ public abstract class ProcessButton extends FlatButton {
     private int mProgress;
     private int mMaxProgress;
     private int mMinProgress;
+
+    private Integer textColorEnabled;
+    private Integer textColorDisabled;
 
     private GradientDrawable mProgressDrawable;
     private GradientDrawable mCompleteDrawable;
@@ -98,6 +109,9 @@ public abstract class ProcessButton extends FlatButton {
                 mDisabledDrawable = (GradientDrawable) getDrawable(R.drawable.rect_disabled).mutate();
                 mDisabledDrawable.setCornerRadius(getCornerRadius());
                 mDisabledDrawable.setColor(attr.getColor(R.styleable.ProcessButton_pb_colorDisabled, getColor(R.color.grey_disabled)));
+                textColorEnabled = attr.getColor(R.styleable.ProcessButton_pb_textColorEnabled, purple);
+                textColorDisabled = attr.getColor(R.styleable.ProcessButton_pb_textColorDisabled, purple);
+
                 forceUpdateOnEnabled(this.isEnabled());
             }
 
@@ -159,8 +173,18 @@ public abstract class ProcessButton extends FlatButton {
         if(getDisabledText() != null) {
             setText(getDisabledText());
         }
+        if (getTextColorDisabled()!=null) {
+            setTextColor(getTextColorDisabled());
+        }
         if(getDisabledDrawable() != null) {
             setBackgroundCompat(getDisabledDrawable());
+        }
+    }
+
+
+    private void onEnabledState() {
+        if (getTextColorEnabled()!=null) {
+            setTextColor(getTextColorEnabled());
         }
     }
 
@@ -296,6 +320,7 @@ public abstract class ProcessButton extends FlatButton {
         if (!enabled) {
             onDisabledState();
         } else {
+            onEnabledState();
             switch (getState()) {
                 case NORMAL:
                     onNormalState();

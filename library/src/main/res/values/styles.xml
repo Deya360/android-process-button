@@ -6,6 +6,8 @@
         <attr name="pb_textDisabled" format="string" />
         <attr name="pb_colorProgress" format="color" />
         <attr name="pb_colorComplete" format="color" />
+        <attr name="pb_textColorDisabled" format="color" />
+        <attr name="pb_textColorEnabled" format="color" />
         <attr name="pb_colorError" format="color" />
         <attr name="pb_colorDisabled" format="color"/>
     </declare-styleable>
