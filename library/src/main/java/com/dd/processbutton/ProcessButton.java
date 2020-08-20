@@ -191,7 +191,7 @@ public abstract class ProcessButton extends FlatButton {
     @Override
     public void setText(CharSequence text, BufferType type) {
         super.setText(text, type);
-        super.setNormalText(text);
+//        super.setNormalText(text);
     }
 
     @Override
